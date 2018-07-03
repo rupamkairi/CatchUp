@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 64211138732484796}
   - component: {fileID: 54794260710767450}
   - component: {fileID: 114569700557179368}
+  - component: {fileID: 114724085708048096}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -126,8 +127,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f9e1a4200af2442baa590fcce54826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  managerScript: {fileID: 0}
+  levelScript: {fileID: 0}
   speed: 5
   PointText: {fileID: 0}
-  GameoverText: {fileID: 0}
+  EndText: {fileID: 0}
   levelText: {fileID: 0}
+--- !u!114 &114724085708048096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385049147762786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ded5587ee86f4a49be95ca0cded6597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rows: 16
+  Columns: 16
+  Wall: {fileID: 1354224469487932, guid: 173426463fd435045a02c3bb695675d9, type: 2}
+  Coin: {fileID: 1579973157230468, guid: 8361cb1818a2f2045b21fa9176cf67c0, type: 2}

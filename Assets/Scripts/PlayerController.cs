@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Restart()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(2);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
