@@ -11,9 +11,10 @@ public class PlayerController : MonoBehaviour
     public Text PointText;
     public Text EndText;
     public Text levelText;
+    public Joystick joystick;
 
     private bool isCaught;
-    private int Level = 1;
+    private int Level;
     private int Money;
     private int CoinCount;
     private Rigidbody rb;
@@ -69,6 +70,8 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
         rb.velocity = (movement * speed);
+
+        joystickControl();
     }
 
     void OnTriggerEnter(Collider other)
@@ -100,5 +103,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(2);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+    }
+
+    void joystickControl()
+    {
+        Vector3 moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical).normalized;
+        transform.Translate(moveVector * speed * Time.deltaTime);
     }
 }

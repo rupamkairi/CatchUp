@@ -17,6 +17,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	private List<Vector3> gridPositions = new List<Vector3>();
 
+
 	void InitializeList()
 	{
 		gridPositions.Clear();
