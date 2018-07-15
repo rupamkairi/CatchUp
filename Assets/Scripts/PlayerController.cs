@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             // remove Coin after collision, Increase Point
             Destroy(other.gameObject);
-            Money += 2;
+            Money ++;
             CoinCount--;
             SetMoneyText();
 			Debug.Log(CoinCount);

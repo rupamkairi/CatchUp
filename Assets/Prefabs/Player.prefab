@@ -132,6 +132,7 @@ MonoBehaviour:
   PointText: {fileID: 0}
   EndText: {fileID: 0}
   levelText: {fileID: 0}
+  joystick: {fileID: 0}
 --- !u!114 &114724085708048096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,4 +147,4 @@ MonoBehaviour:
   Rows: 16
   Columns: 16
   Wall: {fileID: 1354224469487932, guid: 173426463fd435045a02c3bb695675d9, type: 2}
-  Coin: {fileID: 1579973157230468, guid: 8361cb1818a2f2045b21fa9176cf67c0, type: 2}
+  Coin: {fileID: 1525645516962618, guid: 8361cb1818a2f2045b21fa9176cf67c0, type: 2}
