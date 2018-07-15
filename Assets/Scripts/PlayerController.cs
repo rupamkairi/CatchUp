@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
         // Set Points at the start.
         /// <Save_From_Last_Scene>
-        Money = 5;
+        Money = PlayerPrefs.GetInt("Score", 5);
         SetMoneyText();
 
         // Set Ending Text component and setting it to null
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             // Slower the time and Restart, show End Text, go to another Scene
             Time.timeScale = 0.2f;
             EndText.text = "ARRESTED! 5 MONEY PENALTY";
-            Money -= 5;
+            SetMoneyText();
             StartCoroutine(Restart());
         }
 
@@ -72,6 +72,19 @@ public class PlayerController : MonoBehaviour
 			Level++;
 			StartCoroutine(Restart());
 		}
+
+        // Reset Score values
+        if (Input.GetButtonUp("Reset"))
+        {
+            EndText.text = "YOU CHOSEN TO RESTART THE SPREE";
+            Time.timeScale = 0.2f;
+            Money = 5;
+            SetMoneyText();
+            StartCoroutine(Restart());
+        }
+
+        // Setting the Money value and storing it.
+        PlayerPrefs.SetInt("Score", Money);
     }
 
     void FixedUpdate()
@@ -104,6 +117,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             // If collided to AI, Player get caught
+            Money -= 5;
             isCaught = true;
         }
     }
