@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
     public LevelGenerator levelScript;
     public float speed;
+    [HideInInspector]public int Money;
     public Text PointText;
     public Text EndText;
-    public Text levelText;
     public Joystick joystick;
 
     private bool isCaught;
     private int Level;
-    private int Money;
     private int CoinCount;
     private Rigidbody rb;
+
 
 
     // Make call to Setup Game
@@ -32,7 +33,6 @@ public class PlayerController : MonoBehaviour
     {
         levelScript.SetupScene();
 		CoinCount = levelScript.coinCount;
-		Debug.Log(CoinCount);
     }
 
     // Starts Game Elements
@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
         // Set Ending Text component and setting it to null
         EndText.text = null;
-		levelText.text = "LEVEL " + Level.ToString();
     }
 
     void Update()
@@ -66,7 +65,6 @@ public class PlayerController : MonoBehaviour
 		if (CoinCount == 0)
 		{
             // Slower the time, Congratulate, go to the another level or Scene
-			Debug.Log("Win");
 			Time.timeScale = 0.2f;
 			EndText.text = "GREAT ! LEVEL CLEARED";
 			Level++;
@@ -76,11 +74,7 @@ public class PlayerController : MonoBehaviour
         // Reset Score values
         if (Input.GetButtonUp("Reset"))
         {
-            EndText.text = "YOU CHOSEN TO RESTART THE SPREE";
-            Time.timeScale = 0.2f;
-            Money = 5;
-            SetMoneyText();
-            StartCoroutine(Restart());
+            ResetGame();
         }
 
         // Setting the Money value and storing it.
@@ -107,11 +101,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Coin")
         {
             // remove Coin after collision, Increase Point
-            Destroy(other.gameObject);
+            // Destroy(other.gameObject);
+            other.gameObject.SetActive (false);
             Money ++;
             CoinCount--;
             SetMoneyText();
-			Debug.Log(CoinCount);
         }
 
         if (other.gameObject.tag == "Enemy")
@@ -140,6 +134,19 @@ public class PlayerController : MonoBehaviour
     void joystickControl()
     {
         Vector3 moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical).normalized;
-        transform.Translate(moveVector * speed * Time.deltaTime);
+        transform.Translate(moveVector * (speed + 0.5f) * Time.deltaTime);
     }
+
+    // Resets all Game Values
+    public void ResetGame()
+    {
+        Debug.Log("RESET Button clicked");
+        EndText.text = "YOU CHOSEN TO RESTART THE SPREE";
+        Time.timeScale = 0.2f;
+        Money = 5;
+        SetMoneyText();
+        StartCoroutine(Restart());
+    }
+
+    
 }

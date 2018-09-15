@@ -129,9 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelScript: {fileID: 0}
   speed: 5
+  Money: 0
   PointText: {fileID: 0}
   EndText: {fileID: 0}
-  levelText: {fileID: 0}
   joystick: {fileID: 0}
 --- !u!114 &114724085708048096
 MonoBehaviour:
