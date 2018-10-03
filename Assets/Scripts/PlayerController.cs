@@ -51,6 +51,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // When the user presses the back button on an android device
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                return;
+            }
+        }
+
         // If Player get caught
         if (isCaught)
         {
@@ -126,7 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2);
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     // Logic for Joystic type touch control
