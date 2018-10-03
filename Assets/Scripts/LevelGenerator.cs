@@ -10,7 +10,7 @@ public class LevelGenerator : MonoBehaviour {
 	public int Columns = 16;
 
 	internal int coinCount;
-	// these public fields are need to be set at only in GameManager component inspector
+	// these public fields are needee to be set at only in GameManager component inspector
 	// and not to be set in PlayerController component inspector
 	public GameObject Wall;
 	public GameObject Coin;
