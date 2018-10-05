@@ -6,8 +6,9 @@ using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour {
 
-	public int Rows = 16;
-	public int Columns = 16;
+	// change these in the inspector to increase the region on spawning walls.
+	public int Rows;
+	public int Columns;
 
 	internal int coinCount;
 	// these public fields are needee to be set at only in GameManager component inspector
@@ -49,20 +50,20 @@ public class LevelGenerator : MonoBehaviour {
 		InitializeList();
 
 		// spawn wall prefabs at randomly chosen positions, from gridPositions list
-		for (int i = 0; i < Random.Range(8, 16); i++)
+		for (int i = 0; i < Random.Range(15, 30); i++)
 		{
 			Vector3 randomPosition = RandomPosition();
 			GameObject wall = Instantiate(Wall, randomPosition, Quaternion.identity) as GameObject;
 		}
 
 		// spawn coin prefabs at randomly chosen positions, from gridPositions list
-		coinCount = Random.Range(3, 8);
+		coinCount = Random.Range(5, 10);
 		for (int i = 0; i < coinCount; i++)
 		{
 			Vector3 randomPosition = RandomPosition();
 			GameObject wall = Instantiate(Coin, randomPosition, Quaternion.Euler(90, 0, 45)) as GameObject;
 		}
 
-		// spawn player and ai
+
 	}
 }

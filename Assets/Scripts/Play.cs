@@ -20,7 +20,7 @@ public class Play : MonoBehaviour {
 
     public void HandleClick()
     {
-        Application.LoadLevel(index: 1);
-        Application.UnloadLevel(index: 0);
+        SceneManager.LoadScene("CatchUp-Navmesh");
+        SceneManager.UnloadSceneAsync("MainMenu");
     }
 }
