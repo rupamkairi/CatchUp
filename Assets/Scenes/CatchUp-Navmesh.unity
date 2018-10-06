@@ -742,6 +742,11 @@ Prefab:
       propertyPath: Columns
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114569700557179368, guid: f297789057e35c34db8c5c428083dac9,
+        type: 2}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f297789057e35c34db8c5c428083dac9, type: 2}
   m_IsPrefabAsset: 0
